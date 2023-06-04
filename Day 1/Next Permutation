@@ -1,0 +1,18 @@
+from os import *
+from sys import *
+from collections import *
+from math import *
+
+def nextPermutation(arr, N):
+    pivotindex = 0
+    for i in range(N-1, -1, -1):
+        if arr[i] > arr[i-1]:
+            pivotindex = i-1
+            break
+
+    arr[pivotindex+1:] = sorted(arr[pivotindex+1:])
+    for i in range(len(arr[pivotindex+1:])):
+        if arr[pivotindex+1+i] > arr[pivotindex]:
+            arr[pivotindex], arr[pivotindex+1+i] = arr[pivotindex+1+i], arr[pivotindex]
+            break
+    return arr
