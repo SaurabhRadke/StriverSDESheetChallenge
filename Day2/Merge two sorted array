@@ -1,0 +1,29 @@
+from math import *
+from collections import *
+from sys import *
+from os import *
+
+def ninjaAndSortedArrays(arr1,arr2,m,n):
+    # Write your code here.
+    ans=[0]*(m+n)
+    i=0
+    j=0
+    k=0
+    while i<m and j<n:
+        if arr1[i]>arr2[j]:
+            ans[k]=arr2[j]
+            k+=1
+            j+=1
+        else:
+            ans[k]=arr1[i]
+            k+=1
+            i+=1
+    while i<m:
+        ans[k]=arr1[i]
+        k+=1
+        i+=1
+    while j<n:
+        ans[k]=arr2[j]
+        k+=1
+        j+=1
+    return ans
