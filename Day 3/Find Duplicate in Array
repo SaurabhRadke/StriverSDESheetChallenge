@@ -1,0 +1,20 @@
+from os import *
+from sys import *
+from collections import *
+from math import *
+
+def findDuplicate(arr:list, n:int):
+    # Write your code here.
+    # Returns an integer.
+    i=0
+    while i<n:
+        if arr[i]!=i+1:
+            p=arr[i]
+            if arr[p-1]!=arr[i]:
+                arr[i],arr[p-1]=arr[p-1],arr[i]
+            else:return p
+        else:
+            i+=1
+    return -1
+    
+
