@@ -1,0 +1,30 @@
+from os import *
+from sys import *
+from collections import *
+from math import *
+from heapq import heappush, heappop
+from bisect import bisect, insort
+def getInversions(arr, n) :
+    if n<=1:
+        return 0
+    temp=[]
+    result = 0
+    for i,v in enumerate(arr):
+        heappush(temp,(v,i))
+    x=[]
+    while temp:
+        v,i=heappop(temp)
+        y=bisect(x,i)
+        result+=i-y
+        insort(x,i)
+    return result
+
+# Taking inpit using fast I/O.
+def takeInput() :
+    n = int(input())
+    arr = list(map(int, stdin.readline().strip().split(" ")))
+    return arr, n
+
+# Main.
+arr, n = takeInput()
+print(getInversions(arr, n))
